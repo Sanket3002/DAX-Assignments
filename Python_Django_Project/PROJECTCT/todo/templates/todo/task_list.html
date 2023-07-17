@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo</title>
+        <link rel="stylesheet" href="{% static 'css/task_list.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <meta name="referrer" content="strict-origin" />
+    </head>
+
+<body onload="loadCheckboxState()">
+    <h2 class = 'Heading'>To-Do List</h2>
+    <button class="button-33"><a href ="{% url 'task_new'%}">New Task</a></button>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Update</th>
+            <th>Delete</th>
+            <th>Task Status</th>
+        
+        </tr>    
+   
+        {%for task in tasks%}
+ 
+        <tr>
+          <td><a href = "{% url 'task_detail' id=task.id%}">{{task.title}}<i class="fa-regular fa-link"></i></a></td>
+          <td><button class="button-62"><a href = "{% url 'task_edit' id=task.id%}">Edit</a></button></td>
+          <td><button class="button-62"><a href = "{% url 'task_delete' id=task.id%}">Delete</a></button></td>
+          <td>{% if task.task_status %}
+            <p>Completed</p>
+            {% else %}
+            <p>Not Completed</p>
+            {% endif %}</td>
+    
+        </tr>
+          
+        {%endfor%}
+    </table>
+</body>
+</html>

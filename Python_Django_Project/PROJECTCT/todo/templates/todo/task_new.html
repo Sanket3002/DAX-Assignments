@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task_New</title>
+
+    <link rel="stylesheet" href="{% static 'css/task_new.css' %}">
+
+</head>
+
+<body>
+  <h2>Add Task</h2>
+  <form method = "POST" class = "task-form">{% csrf_token %}
+    {{ form.as_p}}
+<button type = "sumbit" class="button-33">Save</button>
+
+</body>
+
+</html>
